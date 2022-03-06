@@ -9,6 +9,10 @@
     "dev": "concurrently \"npm run client\" \"npm run server\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xuanhiep2k/azofa-ecommerce-MERN.git"
+  },
   "author": "peih_naux",
   "license": "ISC",
   "dependencies": {
