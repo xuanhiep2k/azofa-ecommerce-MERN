@@ -7,6 +7,7 @@
     "server": "nodemon --inspect server.js",
     "client": "npm start --prefix frontend",
     "dev": "concurrently \"npm run client\" \"npm run server\"",
+    "data:import": "node seederScript.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

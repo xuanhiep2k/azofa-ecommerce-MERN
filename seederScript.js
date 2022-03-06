@@ -3,6 +3,7 @@ const productsData = require("./data/productsData");
 const productModel = require("./models/productModel");
 
 connectDB();
+
 const importData = async() =>{
     try {
         await productModel.deleteMany({});
@@ -11,6 +12,7 @@ const importData = async() =>{
 
         console.log('Import Data success');
     } catch (error) {
+        console.log(error)
         console.log('Error when import data');
         process.exit(1);
     }
