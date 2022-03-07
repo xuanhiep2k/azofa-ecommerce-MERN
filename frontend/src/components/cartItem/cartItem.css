@@ -1,0 +1,44 @@
+.cartItem{
+    margin-top: 10px;
+    width: 100%;
+    padding: 0.2rem;
+    margin-bottom: 8px;
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr 1fr 1fr 1fr;
+    gap: 8px;
+    background: rgb(255, 254, 254);
+    border-radius: 10px;
+    place-items: center;
+}
+
+.cartitem__image > img{
+    height: 60px;
+}
+
+.cartitem__name{
+    text-decoration: none;
+    color: #121B5C;
+}
+
+.cartitem__name:hover{
+    color: #121B5C;
+}
+
+.cartitem__select{
+    padding: 10px 17px;
+}
+
+.cartitem__deleteBtn{
+    color: red;
+    background: #fff;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease-out;
+}
+
+.cartitem__deleteBtn:hover,
+.cartitem__deleteBtn:focus,
+.cartitem__deleteBtnactive{
+    color: #121B5C;
+    transform: scale(1.5);
+}

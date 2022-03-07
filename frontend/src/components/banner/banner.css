@@ -1,0 +1,21 @@
+.banner{
+    flex: 3;
+    margin-left: 35px;
+    border-radius: 10px;
+}
+
+.bannerImg{
+    width: 600px;
+    border-radius: 10px;
+}
+
+.slick-slider{
+    width: 600px;
+    border-radius: 10px;
+}
+
+.slick-prev::before, 
+.slick-next::before{
+    color: #121B5C !important;
+}
+

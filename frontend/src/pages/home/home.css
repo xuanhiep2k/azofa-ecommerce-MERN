@@ -1,0 +1,41 @@
+.home{
+    flex-direction: column;
+}
+
+.homeTop{
+    display: flex;
+    flex: 5;
+}
+
+.ads{
+    flex: 1;
+    border-radius: 10px;
+    width: 320px;
+   
+}
+
+.homeProduct{
+    flex-direction: column;
+}
+
+.homeProductTitle{
+    font-weight: 900;
+    margin-top: 20px;
+    margin-left: 10px;
+    font-size: 20px;
+}
+
+.homeProductTitle > a{
+    color: black;
+    text-decoration: none;
+}
+
+.homeProductTitle > a:hover{
+    text-decoration: underline;
+}
+
+.homeProductItem{
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+}

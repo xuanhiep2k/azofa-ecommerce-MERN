@@ -1,0 +1,11 @@
+.productScreen{
+    display: flex;
+}
+
+.productDetailsLeft{
+    flex: 1;
+}
+
+.productDetailsRight{
+    flex: 4;
+}

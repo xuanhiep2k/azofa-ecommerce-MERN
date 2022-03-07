@@ -1,0 +1,105 @@
+.topbar{
+    width: 100%;
+    height: 64px;
+    top: 0;
+    z-index: 1000;
+    position: fixed;
+    background-color: #121B5C;
+    display: flex;
+    margin: 0 auto;
+    padding: 0;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.topbarLogoImg{
+    height: 50px;
+    margin-top: 5px;
+}
+
+.topbarLogo{
+    margin-left: 20px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.topbarItem{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 20px;
+}
+
+.topbarItemSearch{
+    display: block;
+    margin-right: 40px;
+
+}
+
+.topbarSearchIcon{
+    position: absolute;
+    margin-top: 5px;
+    margin-left: 5px;
+    color: rgb(116, 112, 112);
+}
+
+.topbarFormSearch{
+    width: 200px;
+    height: 30px;
+    border: none;
+    border-radius: 10px;
+    padding-left: 30px;
+    outline: none;
+}
+
+.topbarFormSearch:hover{
+    outline: none;
+}
+
+.topbarItemMore{
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    margin-right: 40px;
+}
+
+.topbarItemMore.call{
+    background-color: rgba(250, 245, 245, 0.15);
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+.topbarItemMore > a{
+    text-decoration: none;
+    color: white;
+}
+
+.topbarItemMore:hover{
+    background-color: rgba(250, 245, 245, 0.15);
+    border-radius: 10px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.topbarIcon{
+    margin-top: 10px;
+    margin-right: 5px;
+    padding-left: 5px;
+}
+
+.phone{
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.topbarText{
+    margin-top: 10px;
+    font-size: 13px;
+    padding-right: 10px;
+}
+
+.topbarText.account{
+    margin-top: 18px;
+} 
+
