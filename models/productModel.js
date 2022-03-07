@@ -30,6 +30,11 @@ const productSchema = new mongoose.Schema({
         type: String,
         trim: true,
         required: true
+    },
+    desDetails:{
+        type: String,
+        trim: true,
+        required: true
     }
 },{
     timestamps: true //important

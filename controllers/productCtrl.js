@@ -1,15 +1,11 @@
 const Product = require('../models/productModel');
 
 const productCtrl = {
-    getProducts: async(req, res) =>{
+    getAllProducts: async(req, res) =>{
         try {
             const products = await Product.find({});
 
-            res.json({
-                status: 'success',
-                result: products.length,
-                products: products
-            })
+            res.json(products);
         } catch (error) {
             return res.status(500).json({
                 msg: error.message
@@ -20,10 +16,7 @@ const productCtrl = {
         try {
             const product = await Product.findById(req.params.id);
 
-            req.json({
-                status: 'success',
-                product: product
-            })
+            res.json(product)
         } catch (error) {
             return res.status(500).json({
                 msg: error.message

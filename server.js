@@ -6,14 +6,14 @@ const connectDB = require('./config/db');
 
 const app = express();
 
+dotenv.config({path: 'config.env'});
+const port = process.env.PORT || 8000;
+
 //use JSON
 app.use(express.json());
 
 //parser request to body-parser
 app.use(bodyParser.urlencoded({extended: true}));
-
-dotenv.config({path: 'config.env'});
-const port = process.env.PORT || 8000;
 
 //connect to mongooseDB
 connectDB();
