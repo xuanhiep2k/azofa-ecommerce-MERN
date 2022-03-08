@@ -6,20 +6,20 @@ import { useNavigate } from 'react-router-dom';
 
 const LoginScreen = () => {
 
-    // const nagative = useNavigate();
-    // const [email, setEmail] = useState("");
-    // const [password, setPassword] = useState("");
-    // const [error, setError] = useState("");
+    const nagative = useNavigate();
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
 
-    // useEffect(() => {
-    //     if (localStorage.getItem("authToken")) {
-    //       nagative("/");
-    //     }
-    //   }, [nagative]);
+    useEffect(() => {
+        if (localStorage.getItem("authToken")) {
+          nagative("/");
+        }
+      }, [nagative]);
 
-    // const loginHandler = async(e) =>{
+    const loginHandler = async(e) =>{
 
-    // }
+    }
 
   return (
     <div className='loginScreen'>
@@ -27,10 +27,10 @@ const LoginScreen = () => {
         <form action="#" method="get">
             <fieldset>
                 <p>
-                    <input type="text" required value="Username" placeholder="Username"/>
+                    <input type="email" required id="email" placeholder="Email address" onChange={(e) => setEmail(e.target.value)} value={email} tabIndex={1} />
                 </p>
                 <p>
-                    <input type="password" required value="Password" placeholder="Password"/>
+                    <input type="password" required id="password" autoComplete="true" placeholder="Enter password" onChange={(e) => setPassword(e.target.value)} value={password} tabIndex={2} />
                 </p>
                 <p>
                     <a href="#">Forgot Password?</a>

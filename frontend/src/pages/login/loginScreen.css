@@ -34,7 +34,7 @@ margin: 50px auto;
 width: 300px;
 }
 
-form fieldset input[type="text"],
+form fieldset input[type="email"],
 input[type="password"] {
     appearance: none;
     background: #e5e5e5;
