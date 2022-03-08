@@ -20,6 +20,7 @@ connectDB();
 
 //use routers
 app.use('/api', require('./routes/productRouter'));
+app.use('/api/auth', require('./routes/auth'));
 
 app.listen(port, () =>{
     console.log(`PORT: ${port}`)

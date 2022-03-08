@@ -55,23 +55,25 @@ const Topbar= () =>{
                     Tra cứu<br/> đơn hàng
                 </div>
             </div>
-                <Link to='/cart'>
-            <div className="topbarItemMore">
-                    <i className="topbarIcon"><ShoppingCartIcon fontSize='large'/></i>
-                    <span className="cartlogo__badge">{getCartCount()}</span>
-                    <div className="topbarText">
-                        Giỏ<br/> hàng
+            <Link to='/cart'>
+                <div className="topbarItemMore">
+                        <i className="topbarIcon"><ShoppingCartIcon fontSize='large'/></i>
+                        <span className="cartlogo__badge">{getCartCount()}</span>
+                        <div className="topbarText">
+                            Giỏ<br/> hàng
+                        </div>
+                </div>
+            </Link>
+            <Link to='/login'>
+                <div className="topbarItemMore account">
+                    <div className="topbarIcon account">
+                        <AccountCircleIcon fontSize="large"/>
                     </div>
-            </div>
-                </Link>
-            <div className="topbarItemMore account">
-                <div className="topbarIcon account">
-                    <AccountCircleIcon fontSize="large"/>
+                    <div className="topbarText account">
+                        xuanhiep
+                    </div>
                 </div>
-                <div className="topbarText account">
-                    xuanhiep
-                </div>
-            </div>
+            </Link>
         </div>
     </div>
   )

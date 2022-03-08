@@ -1,11 +1,12 @@
 .footer{
+    width: 100%;
     display: flex;
     margin-top: 1rem;
     padding: 0.5rem;
     background-color: #f1f1f1;
     bottom: 0;
     left: 0;
-    width: 100%;
+    margin: 0 auto;
     color: black;
     align-items: center;
     justify-content: center;
@@ -14,5 +15,4 @@
 .footer > a{
     color: black;
     text-align: center;
-    
 }

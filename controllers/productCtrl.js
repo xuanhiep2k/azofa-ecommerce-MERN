@@ -1,6 +1,7 @@
-const Product = require('../models/productModel');
+const Product = require('../models/Product');
 
 const productCtrl = {
+    //get all products
     getAllProducts: async(req, res) =>{
         try {
             const products = await Product.find({});
@@ -12,6 +13,7 @@ const productCtrl = {
             })
         }
     },
+    //get a product by id
     getProductById: async(req, res) =>{
         try {
             const product = await Product.findById(req.params.id);
