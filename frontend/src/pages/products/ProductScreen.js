@@ -14,7 +14,6 @@ import { getProductDetails } from '../../redux/actions/productActions';
 
 const ProductScreen = () =>{
 
-  // const [qty, setQty] = useState();
   const dispatch = useDispatch();
 
   const productDetails = useSelector((state) => state.getProductDetails);
@@ -22,12 +21,9 @@ const ProductScreen = () =>{
   const { id } = useParams();
 
   useEffect(() =>{
-    const fetchData = () =>{
-      if(product && id !== product._id){
-        dispatch(getProductDetails(id));
-      }
+    if(product && id !== product._id){
+      dispatch(getProductDetails(id));
     }
-    fetchData();
   },[]);
 
   return(
@@ -45,17 +41,18 @@ const ProductScreen = () =>{
           ) : (
           <>
             <Product
-            key={product._id}
-            title={product.title}
-            img={product.img}
-            price={product.price}
-            unit={product.unit}
-            qty={product.qty}
-            description={product.description}
+            key = {product._id}
+            title = {product.title}
+            img = {product.img}
+            price = {product.price}
+            unit = {product.unit}
+            qty = {product.qty}
+            description = {product.description}
+            productId = {product._id}
             />
             <InfoProduct 
-            key={product._id}
-            desDetails={product.desDetails}
+            key = {product._id}
+            desDetails = {product.desDetails}
             />
           </>
         )}

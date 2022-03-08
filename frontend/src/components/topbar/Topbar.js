@@ -1,4 +1,6 @@
 import './topbar.css';
+import {useSelector} from 'react-redux';
+import { Link } from 'react-router-dom';
 import { logo } from '../../dummyData';
 import SearchIcon from '@material-ui/icons/Search';
 import CallIcon from '@material-ui/icons/Call';
@@ -6,9 +8,17 @@ import MyLocationIcon from '@material-ui/icons/MyLocation';
 import LocalShippingIcon from '@material-ui/icons/LocalShipping';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
-import { Link } from 'react-router-dom';
 
 const Topbar= () =>{
+
+    const cart = useSelector(state => state.cart);
+    const {cartItems} = cart;
+
+    const getCartCount = () =>{
+        return cartItems
+        .reduce((qty, item) => Number(item.qty) + qty, 0);
+    } 
+
   return (
     <div className='topbar'>
         <div className="topbarLogo">
@@ -45,12 +55,15 @@ const Topbar= () =>{
                     Tra cứu<br/> đơn hàng
                 </div>
             </div>
+                <Link to='/cart'>
             <div className="topbarItemMore">
-                <span className="topbarIcon"><ShoppingCartIcon fontSize='large'/></span>
-                <div className="topbarText">
-                    Giỏ<br/> hàng
-                </div>
+                    <i className="topbarIcon"><ShoppingCartIcon fontSize='large'/></i>
+                    <span className="cartlogo__badge">{getCartCount()}</span>
+                    <div className="topbarText">
+                        Giỏ<br/> hàng
+                    </div>
             </div>
+                </Link>
             <div className="topbarItemMore account">
                 <div className="topbarIcon account">
                     <AccountCircleIcon fontSize="large"/>

@@ -1,31 +1,41 @@
 import './cartItem.css';
 import { Link } from 'react-router-dom';
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
+import { useForm } from 'react-hook-form';
 
-const CartItem = () =>{
+const CartItem = ({item, amountChangeHandle, removeFromCartHandle}) =>{
+
+    const {
+        register,
+        formState: { errors }
+      } = useForm();
+
   return (
     <div className='cartItem'>
         <div className="cartitem__image">
-            <img src='https://scontent.fhan14-2.fna.fbcdn.net/v/t1.6435-9/122145096_402515241151117_560129999522686289_n.jpg?_nc_cat=109&ccb=1-5&_nc_sid=8bfeb9&_nc_ohc=-kWwRgEWe1EAX8YUgB4&tn=kINUsOAA-IoCOhgK&_nc_ht=scontent.fhan14-2.fna&oh=00_AT_scaGc8DS0K2nzC0rcfsQwtfjyBH3uXjZ5rQNfmKhWEg&oe=62494343' alt='' />
+            <img src={item.img} alt={item.title} />
         </div>
 
-        <Link to={`/product/111`} className="cartitem__name">
-            <p>Nutri Canxi Nano</p>
+        <Link to={`/product/${item.product}`} className="cartitem__name">
+            <p>{item.title}</p>
         </Link>
 
-        <p className="cartitem__unit">Tuýp</p>
-        <p className="cartitem__price">13.000d</p>
+        <p className="cartitem__unit">{item.unit}</p>
+        <p className="cartitem__price">{item.price} đ</p>
 
-        <p className="cartitem__qty">60</p>
-        {/* <select className="cartitem__select" value={item.qty} onChange={(e) => qtyChangeHandler(item.product, e.target.value)}>
-            {[...Array(item.countInStock).keys()].map((x) =>(
-            <option key={x+1} value={x+1}>
-            {x+1}
-            </option>
-            ))}
-        </select> */}
+        <p className="cartitem__qty">
+            <span>
+                <input 
+                {...register("qty", {
+                required: true,
+                valueAsNumber: true
+                })} 
+                type="number" value={item.qty} onChange={(e) => amountChangeHandle(item.product, e.target.value)}/>
+                {errors?.qty?.type === "required" && <a>Vui lòng nhập số lượng sản phẩm</a>}
+            </span>
+        </p>
 
-        <button className="cartitem__deleteBtn" >
+        <button className="cartitem__deleteBtn" onClick={() => removeFromCartHandle(item.product)}>
             <DeleteOutlineIcon />
         </button>
     </div>

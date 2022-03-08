@@ -65,3 +65,8 @@
 .right__info select{
     padding: 10px 16px;
 }
+
+span > a{
+    color: red;
+    font-size: 12px;
+}

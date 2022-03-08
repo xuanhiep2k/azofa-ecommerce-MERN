@@ -82,6 +82,16 @@
     cursor: pointer;
 }
 
+.cartlogo__badge{
+    color: red;
+    padding: 0 5px;
+    position: absolute;
+    vertical-align: top;
+    margin-left: 15px; 
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
 .topbarIcon{
     margin-top: 10px;
     margin-right: 5px;
