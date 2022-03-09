@@ -2,7 +2,7 @@ import './product.css';
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 import Slider from 'react-slick';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
@@ -34,6 +34,8 @@ const Product = ({productId, title, img, price, unit, qty, description}) =>{
   const onSubmit = () =>{
     navigate('/cart');
   }
+
+  const user = JSON.parse(localStorage.getItem('authToken'));
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -80,11 +82,20 @@ const Product = ({productId, title, img, price, unit, qty, description}) =>{
               Số lượng còn:
               <span>{qty}</span>
             </p>
-            <p>
-              <button type="submit" onClick={addToCartHandle}>
-                Thêm vào giỏ hàng
-              </button>
-            </p>
+              {
+              user ? <>
+                <p>
+                  <button type="submit" onClick={addToCartHandle}>
+                    Thêm vào giỏ hàng
+                  </button>
+                </p>
+              </> : <>
+                < div className='text-noLogin'>
+                  <span>Bạn phải đăng nhập để đặt hàng.</span>
+                  <Link to='/login'>Đăng nhập ngay</Link>
+                </div>
+              </>
+              }
           </div>
         </div>
       </div>

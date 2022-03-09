@@ -70,3 +70,8 @@ span > a{
     color: red;
     font-size: 12px;
 }
+
+.text-noLogin{
+    text-align: center;
+    color: brown;
+}

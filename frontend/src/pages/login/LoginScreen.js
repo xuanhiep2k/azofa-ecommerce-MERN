@@ -40,7 +40,7 @@ const LoginScreen = () => {
 
   return (
     <div className='loginScreen'>
-        <h1><strong>Welcome!</strong> Please login</h1>
+        <h1><strong>Chào mừng! </strong>Vui lòng đăng nhập</h1>
         <form onSubmit={loginHandler}>
             {error && <span className="error-message">{error}</span>}
             <fieldset>
@@ -51,22 +51,22 @@ const LoginScreen = () => {
                     <input type="password" required id="password" autoComplete="true" placeholder="Enter password" onChange={(e) => setPassword(e.target.value)} value={password} tabIndex={2} />
                 </p>
                 <p>
-                    <a href="/">Forgot Password?</a>
-                    <a href="/register">Don't have an account? Register</a>
+                    <a href="/">Quên mật khẩu?</a>
+                    <a href="/register">Bạn chưa có tài khoản? Đăng ký ngay</a>
                 </p>
                 <p>
-                    <input type="submit" value="Login"/>
+                    <input type="submit" value="Đăng nhập"/>
                 </p>
             </fieldset>
         </form>
         <p>
-            <span className="btn-round">or</span>
+            <span className="btn-round">Hoặc</span>
         </p>
         <p>
             <a href='#!' className="facebook-before">
                 <span className="fontawesome-facebook"></span>
             </a>
-            <button className="facebook">Login Using Facbook</button>
+            <button className="facebook">Đăng nhập bằng Facebook</button>
         </p>
     </div>
   )

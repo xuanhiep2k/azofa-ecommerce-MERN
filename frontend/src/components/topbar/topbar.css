@@ -80,6 +80,7 @@
     border-radius: 10px;
     box-sizing: border-box;
     cursor: pointer;
+    transition: ease .2s;
 }
 
 .cartlogo__badge{
@@ -121,7 +122,6 @@
 
 .topbarItemMore.account.login:hover .logout{
     display:block;
-    
 }
  
 .topbarItemMore.account.login:hover .topbarText.account.username{

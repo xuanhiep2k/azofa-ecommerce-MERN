@@ -28,7 +28,9 @@ const Navbar = () =>{
             <div className="navbarText">Về chúng tôi</div>
             {/* <span className="nabvarIcon"><ExpandMoreIcon /></span> */}
         </div>
+           
         <div className="navbarItem">
+            <div style={{cursor: 'default'}} className="navbarText"> Liên hệ: </div>
             <a href="https://www.facebook.com/si.duoc.94617" target="_blank" rel="noreferrer">
                 <span className="nabvarIconFace"><FacebookIcon /></span>
             </a>

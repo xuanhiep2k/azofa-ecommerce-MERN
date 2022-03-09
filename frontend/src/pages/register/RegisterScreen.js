@@ -25,7 +25,7 @@ const RegisterScreen = ({ history }) => {
             setTimeout(() => {
                 setError("");
         }, 5000);
-            return setError("Passwords do not match");
+            return setError("Mật khẩu không khớp");
         }
 
         try {
@@ -36,7 +36,7 @@ const RegisterScreen = ({ history }) => {
             },
             config
         );
-        localStorage.setItem("authToken", data.token);
+        localStorage.setItem("authToken", JSON.stringify(data));
         navigate("/");
         } catch (error) {
             setError(error.response.data.error);
@@ -48,62 +48,31 @@ const RegisterScreen = ({ history }) => {
 
   return (
     <div className="register-screen">
+      <h1 className="register-screen__title">Đăng ký</h1>
       <form onSubmit={registerHandler} className="register-screen__form">
-        <h3 className="register-screen__title">Register</h3>
         {error && <span className="error-message">{error}</span>}
-        <div className="form-group">
-          <label htmlFor="name">Username:</label>
-          <input
-            type="text"
-            required
-            id="name"
-            placeholder="Enter username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="email">Email:</label>
-          <input
-            type="email"
-            required
-            id="email"
-            placeholder="Email address"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="password">Password:</label>
-          <input
-            type="password"
-            required
-            id="password"
-            autoComplete="true"
-            placeholder="Enter password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="confirmpassword">Confirm Password:</label>
-          <input
-            type="password"
-            required
-            id="confirmpassword"
-            autoComplete="true"
-            placeholder="Confirm password"
-            value={confirmpassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-          />
-        </div>
-        <button type="submit" className="btn btn-primary">
-          Register
-        </button>
-
-        <span className="register-screen__subtext">
-          Already have an account? <Link to="/login">Login</Link>
-        </span>
+        <fieldset>
+          <p>
+            <input type="text" required id="name" placeholder="Enter username" value={username} onChange={(e) => setUsername(e.target.value)} />
+          </p>
+          <p>
+            <input type="email" required id="email" placeholder="Email address" value={email} onChange={(e) => setEmail(e.target.value)} />
+          </p>
+          <p>
+            <input type="password" required id="password" autoComplete="true" placeholder="Enter password" value={password} onChange={(e) => setPassword(e.target.value)} />
+          </p>
+          <p>
+            <input type="password" required id="confirmpassword" autoComplete="true" placeholder="Confirm password" value={confirmpassword} onChange={(e) => setConfirmPassword(e.target.value)} />
+          </p>
+          <p>
+            <input type="submit" value='Đăng ký' />
+          </p>
+          <p>
+          <span className="register-screen__subtext">
+            Bạn đã có tài khoản rồi? <Link to="/login">Đăng nhập ngay</Link>
+          </span>
+          </p>
+        </fieldset>
       </form>
     </div>
   );
