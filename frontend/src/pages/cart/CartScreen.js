@@ -35,35 +35,46 @@ const CartScreen = () =>{
     .toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
   }
 
-  const {
-    handleSubmit
-  } = useForm();
+  const { handleSubmit } = useForm();
 
   const onSubmit = () =>{
   }
 
+  //get Token
+  const user = JSON.parse(localStorage.getItem('authToken'));
+
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className='cartScreen'>
-        <div className="cartscreen__left">
-        <h2>GIỎ HÀNG</h2>
-        {cartItems.length === 0 ? (
-          <div>Giỏ hàng đang trống <Link to='/'>Quay trở lại</Link></div>
-        ) : cartItems.map(item =>(
-          <CartItem
-          item={item} amountChangeHandle={amountChangeHandle} removeFromCartHandle={removeFromCartHandle}
-          />
-        ))}
-        </div>
-        <div className="cartscreen__right">
-          <div className="cartscreen__info">
-            <p>Tổng ({getCartCount()}) sản phẩm</p>
-            <p>{getCartSubTotal()} đ</p>
-          </div>
-          <div>
-            <button type="submit">Tiến hành đặt hàng</button>
-          </div>
-        </div>
+        {
+          user ? <>
+          <div className="cartscreen__left">
+            <h2>GIỎ HÀNG</h2>
+            {cartItems.length === 0 ? (
+              <div>Giỏ hàng đang trống <Link to='/'>Quay trở lại</Link></div>
+            ) : cartItems.map(item =>(
+              <CartItem
+              item={item} amountChangeHandle={amountChangeHandle} removeFromCartHandle={removeFromCartHandle}
+              />
+            ))}
+            </div>
+            <div className="cartscreen__right">
+              <div className="cartscreen__info">
+                <p>Tổng ({getCartCount()}) sản phẩm</p>
+                <p>{getCartSubTotal()} đ</p>
+              </div>
+              <div>
+                <button type="submit">Tiến hành đặt hàng</button>
+              </div>
+            </div>
+          </> : <>
+            <div className='text-noLogin'>
+              Bạn phải đăng nhập mới có thể dùng chức năng này!
+              <Link to='/login'>Đăng nhập ngay</Link>
+            </div>
+          </>
+        }
+        
       </div>
     </form>
   )

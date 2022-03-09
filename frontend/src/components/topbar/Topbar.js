@@ -2,22 +2,33 @@ import './topbar.css';
 import {useSelector} from 'react-redux';
 import { Link } from 'react-router-dom';
 import { logo } from '../../dummyData';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import SearchIcon from '@material-ui/icons/Search';
 import CallIcon from '@material-ui/icons/Call';
 import MyLocationIcon from '@material-ui/icons/MyLocation';
 import LocalShippingIcon from '@material-ui/icons/LocalShipping';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import { useNavigate } from 'react-router-dom';
 
 const Topbar= () =>{
 
+    const navigate = useNavigate();
     const cart = useSelector(state => state.cart);
     const {cartItems} = cart;
+
+    //get Token
+    const user = JSON.parse(localStorage.getItem('authToken'));
 
     const getCartCount = () =>{
         return cartItems
         .reduce((qty, item) => Number(item.qty) + qty, 0);
-    } 
+    }
+
+    const logoutHandle = (req, res) =>{
+        localStorage.removeItem('authToken');
+        navigate('/login');
+    }
 
   return (
     <div className='topbar'>
@@ -64,16 +75,33 @@ const Topbar= () =>{
                         </div>
                 </div>
             </Link>
-            <Link to='/login'>
-                <div className="topbarItemMore account">
-                    <div className="topbarIcon account">
-                        <AccountCircleIcon fontSize="large"/>
+            
+            {
+                user ? <>
+                    <div className="topbarItemMore account login">
+                        <div className="topbarIcon account">
+                            <AccountCircleIcon fontSize="large"/>
+                        </div>
+                        <div className="topbarText account username">
+                            {user.username}
+                        </div>
+                        <div className='logout'>
+                            <ExitToAppIcon onClick={logoutHandle}/>
+                        </div>
                     </div>
-                    <div className="topbarText account">
-                        xuanhiep
-                    </div>
-                </div>
-            </Link>
+                </> : <>
+                    <Link to='/login'>
+                        <div className="topbarItemMore account">
+                            <div className="topbarIcon account">
+                                <AccountCircleIcon fontSize="large"/>
+                            </div>
+                            <div className="topbarText account">
+                                Member
+                            </div>
+                        </div>
+                    </Link>
+                </>
+            }
         </div>
     </div>
   )

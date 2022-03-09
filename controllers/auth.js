@@ -1,5 +1,6 @@
 const User = require('../models/User');
 const crypto = require('crypto');
+const { use } = require('express/lib/router');
 
 const auth = {
     //login
@@ -24,10 +25,11 @@ const auth = {
         if (!isMatch) {
             return next(new ErrorResponse("Invalid credentials", 401));
         }
-    
+        
         sendToken(user, 200, res);
+        
         } catch (err) {
-        next(err);
+            next(err);
         }
     },
     register: async(req, res, next) =>{
@@ -51,6 +53,14 @@ const auth = {
     resetPassword: async(req, res, next) =>{
         
     }
+    
 }
+
+//send token
+const sendToken = (user, statusCode, res) => {
+    const username = user.username;
+    const token = user.getSignedJwtToken();
+    res.status(statusCode).json({ sucess: true, token, username });
+};
 
 module.exports = auth;

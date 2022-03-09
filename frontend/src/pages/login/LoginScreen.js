@@ -1,7 +1,6 @@
 import './loginScreen.css';
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
 
 const LoginScreen = () => {
@@ -18,13 +17,32 @@ const LoginScreen = () => {
       }, [nagative]);
 
     const loginHandler = async(e) =>{
+        e.preventDefault();
 
+        const config = {
+        header: {
+            "Content-Type": "application/json",
+        },};
+
+        try {
+            const { data } = await axios.post("/api/auth/login", { email, password }, config);
+            
+            localStorage.setItem("authToken", JSON.stringify(data));
+            nagative("/");
+        } catch (error) {
+            alert('Mật khẩu không đúng')
+            setError(error.response.data.error);
+            setTimeout(() => {
+                setError("");
+            }, 5000);
+        }
     }
 
   return (
     <div className='loginScreen'>
-        <h1><strong>Welcome.</strong> Please login.</h1>
-        <form action="#" method="get">
+        <h1><strong>Welcome!</strong> Please login</h1>
+        <form onSubmit={loginHandler}>
+            {error && <span className="error-message">{error}</span>}
             <fieldset>
                 <p>
                     <input type="email" required id="email" placeholder="Email address" onChange={(e) => setEmail(e.target.value)} value={email} tabIndex={1} />
@@ -33,7 +51,8 @@ const LoginScreen = () => {
                     <input type="password" required id="password" autoComplete="true" placeholder="Enter password" onChange={(e) => setPassword(e.target.value)} value={password} tabIndex={2} />
                 </p>
                 <p>
-                    <a href="#">Forgot Password?</a>
+                    <a href="/">Forgot Password?</a>
+                    <a href="/register">Don't have an account? Register</a>
                 </p>
                 <p>
                     <input type="submit" value="Login"/>
@@ -41,19 +60,13 @@ const LoginScreen = () => {
             </fieldset>
         </form>
         <p>
-            <span class="btn-round">or</span>
+            <span className="btn-round">or</span>
         </p>
         <p>
-            <a class="facebook-before">
-                <span class="fontawesome-facebook"></span>
+            <a href='#!' className="facebook-before">
+                <span className="fontawesome-facebook"></span>
             </a>
-            <button class="facebook">Login Using Facbook</button>
-        </p>
-        <p>
-            <a class="twitter-before">
-                <span class="fontawesome-twitter"></span>
-            </a>
-            <button class="twitter">Login Using Twitter</button>
+            <button className="facebook">Login Using Facbook</button>
         </p>
     </div>
   )

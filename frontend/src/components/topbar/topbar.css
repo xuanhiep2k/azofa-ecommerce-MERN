@@ -111,5 +111,20 @@
 
 .topbarText.account{
     margin-top: 18px;
-} 
+}
+
+.logout{
+    display: none;
+    margin-top: 15px;
+    margin-left: 21px;
+}
+
+.topbarItemMore.account.login:hover .logout{
+    display:block;
+    
+}
+ 
+.topbarItemMore.account.login:hover .topbarText.account.username{
+    display: none;
+}
 

@@ -2,15 +2,13 @@ const express = require('express');
 const router = express.Router();
 
 //import Controllers
-const { login, register, forgotPassword, resetPassword } = require('../controllers/auth');
-
-//all Controllers
+const { login, register, forgotPassword, resetPassword, logout } = require('../controllers/auth');
 
 //login
-router.get('/login', login);
+router.post('/login', login);
 
 //register
-router.get('/register', register);
+router.post('/register', register);
 
 //forgotPassword
 router.get('/forgotpassword', forgotPassword);
